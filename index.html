@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="A fictional library seat and equipment booking simulator for a secure development workshop.">
+  <title>Library Booking Simulator</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Library Booking Simulator home">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span>UNSIET <span class="brand-light">Workshop</span></span>
+      </a>
+      <span class="top-note"><span class="live-dot"></span> Fictional demo environment</span>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">SECURE APPLICATION DEVELOPMENT · EXERCISE 1.2</p>
+          <h1>A seat for your<br><em>next good idea.</em></h1>
+          <p class="hero-intro">Reserve a study seat or shared equipment in this small library booking simulator.</p>
+          <a class="button button-light" href="#booking">Make a booking <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="book book-one"></div><div class="book book-two"></div>
+          <div class="chair-back"></div><div class="chair-seat"></div><div class="chair-leg"></div>
+          <span class="art-label">A QUIETER PLACE TO THINK</span>
+        </div>
+        <div class="hero-foot"><span>01 / THE READING ROOM</span><span>JAUNPUR, INDIA</span></div>
+      </section>
+
+      <section class="stats" aria-label="Booking summary">
+        <div><span class="stat-label">RESOURCES</span><strong id="resource-count">05</strong></div>
+        <div><span class="stat-label">ACTIVE BOOKINGS</span><strong id="active-count">00</strong></div>
+        <div><span class="stat-label">NEXT AVAILABLE</span><strong id="next-date">Today</strong></div>
+        <p>Simple reservations.<br>Thoughtful shared spaces.</p>
+      </section>
+
+      <section class="section" id="booking">
+        <div class="section-heading"><div><p class="eyebrow">PLAN A STUDY SESSION</p><h2>Book a resource</h2></div><span class="section-index">01</span></div>
+        <div class="booking-layout">
+          <form id="booking-form" class="booking-form" novalidate>
+            <label>Choose a resource<select id="resource" name="resource_id" required></select></label>
+            <div class="form-row">
+              <label>Date<input id="date" name="date" type="date" required></label>
+              <label>Your demo ID<input id="user-id" name="user_id" type="text" maxlength="32" placeholder="e.g. SYN-014" required></label>
+            </div>
+            <div class="form-row">
+              <label>Start time<input id="start-time" name="start_time" type="time" required></label>
+              <label>End time<input id="end-time" name="end_time" type="time" required></label>
+            </div>
+            <label>What are you working on?<input id="purpose" name="purpose" type="text" maxlength="120" placeholder="e.g. Quiet study" required></label>
+            <button class="button button-dark" type="submit">Confirm booking <span aria-hidden="true">→</span></button>
+            <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+            <p class="privacy-note">Use fictional IDs only. This demo does not ask for contact details.</p>
+          </form>
+          <aside class="resource-panel"><div class="panel-head"><h3>In the catalogue</h3><span id="catalogue-total">05 ITEMS</span></div><div id="resource-list" class="resource-list"></div></aside>
+        </div>
+      </section>
+
+      <section class="section schedule-section">
+        <div class="section-heading"><div><p class="eyebrow">YOUR RESERVATIONS</p><h2>Booking schedule</h2></div><span class="section-index">02</span></div>
+        <div class="toolbar">
+          <label class="date-filter">Show date<input id="schedule-date" type="date"></label>
+          <div class="toolbar-actions"><button id="export-csv" class="button button-outline" type="button">Download CSV <span aria-hidden="true">↓</span></button><button id="export-json" class="text-button" type="button">Save JSON copy</button></div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>TIME</th><th>RESOURCE</th><th>BOOKING</th><th>DEMO USER</th><th>PURPOSE</th><th>STATUS</th><th></th></tr></thead><tbody id="schedule-body"></tbody></table><div id="empty-schedule" class="empty-state">Nothing booked for this date yet. The room is yours to plan.</div></div>
+        <div id="all-bookings" class="all-bookings"></div>
+      </section>
+
+      <section class="section reports-section">
+        <div class="section-heading"><div><p class="eyebrow">A LITTLE HOUSEKEEPING</p><h2>Booking reports</h2></div><span class="section-index">03</span></div>
+        <div class="report-grid"><article class="report-card"><div class="report-head"><h3>Most-used resources</h3><span>ALL TIME</span></div><div id="usage-report" class="report-content"></div></article><article class="report-card"><div class="report-head"><h3>Cancelled bookings</h3><span id="cancelled-total">00 RECORDS</span></div><div id="cancelled-report" class="report-content"></div></article></div>
+      </section>
+      <p class="storage-notice"><span aria-hidden="true">ⓘ</span> Demo data is stored in this browser only. It is not shared with other visitors and may be cleared with browser data.</p>
+    </main>
+
+    <footer><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">L</span><span>UNSIET <span class="brand-light">Workshop</span></span></a><span>EXERCISE 1.2 · LIBRARY BOOKING SIMULATOR</span><a href="https://github.com/buddhu22/exercise-1.2-mini-project-workshop-Library-seat-booking-and-simulation-system" target="_blank" rel="noreferrer">VIEW PROJECT ↗</a></footer>
+  </div>
+  <dialog id="confirm-dialog" class="confirm-dialog"><form method="dialog"><p class="eyebrow">CANCEL RESERVATION</p><h2>Are you sure?</h2><p id="confirm-text">This booking will remain in your cancelled booking history.</p><div class="dialog-actions"><button class="button button-outline" value="keep">Keep booking</button><button class="button button-dark" id="confirm-cancel" value="cancel">Cancel booking</button></div></form></dialog>
+</body>
+</html>

@@ -99,3 +99,30 @@ The test suite covers valid booking, nonexistent resources, overlap rejection, a
 ## Future improvements
 
 A later version could add authentication, opening-hour rules, a database with transactions, and a guided recovery utility for malformed JSON. A wait-list could be added separately after the core booking flow is stable.
+
+## Vercel web demo
+
+This repository also includes a browser-based demo (`index.html`, `styles.css`, and `app.js`) configured for static hosting on Vercel. The existing Python CLI remains available for local use.
+
+### Deploy with the Vercel dashboard
+
+1. Sign in to [Vercel](https://vercel.com/) and choose **Add New → Project**.
+2. Import `buddhu22/exercise-1.2-mini-project-workshop-Library-seat-booking-and-simulation-system` from GitHub.
+3. Keep the framework preset as **Other**. No build command or external dependencies are needed; leave the output directory unset so Vercel serves the project root.
+4. Select **Deploy**. Each later push to the connected GitHub branch can trigger a new deployment.
+
+The static site is configured by `vercel.json` and uses standard HTTP security headers. The browser demo stores its bookings in that visitor's `localStorage`; it does not write to the Python JSON file on Vercel. Each browser has its own separate data, and clearing browser storage removes it. This is suitable for a classroom simulator only, not real reservations or shared multi-user data. Shared persistence would require an authenticated backend and durable database or object storage.
+
+### Deploy with the Vercel CLI
+
+Install or use the Vercel CLI, authenticate with `vercel login`, then run from the repository directory:
+
+```bash
+vercel
+```
+
+Follow the prompts to link or create a Vercel project. For a production deployment, run:
+
+```bash
+vercel --prod
+```
