@@ -1,0 +1,2 @@
+booking_id,resource_id,date,start_time,end_time,user_id,purpose,status
+BKG-001,LIB-SEAT-001,2026-10-08,10:00,11:00,SYN-001,Study,Active

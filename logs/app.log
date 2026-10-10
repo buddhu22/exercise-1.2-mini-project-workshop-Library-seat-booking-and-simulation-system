@@ -1,0 +1,5 @@
+
+2026-10-08 23:43:48,514 INFO Booking created: BKG-001
+2026-10-08 23:43:48,514 WARNING Booking rejected: That time overlaps an existing active booking.
+2026-10-08 23:43:48,515 INFO Exported daily schedule CSV for 2026-10-08.
+2026-10-08 23:43:48,516 INFO Booking cancelled.
